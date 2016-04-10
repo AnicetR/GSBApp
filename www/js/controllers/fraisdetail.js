@@ -10,9 +10,7 @@ angular.module('starter')
     var data = {};
     data[$scope.texts.id] = $scope.data.value;
     Frais.putBundled(data).then(function(result){
-      $scope.status = result[0];
-    }, function(error){
-      $scope.status = error
+      $scope.status = result;
     });
   }
 });

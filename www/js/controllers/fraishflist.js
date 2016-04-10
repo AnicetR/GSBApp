@@ -7,7 +7,6 @@ angular.module('starter')
   Frais.getAllFrais().then(function(result) {
     store.set('listsitem', result);
     $scope.listsitem = store.get('listsitem');
-    console.log(result);
   }, function() {
     $scope.listsitem = store.get('listsitem');
   });

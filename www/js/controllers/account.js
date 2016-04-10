@@ -10,4 +10,8 @@ angular.module('starter')
       $scope.listsitem = store.get('listsitem');
     });
   };
+
+  $scope.logout = function() {
+    Auth.logout();
+  }
 });

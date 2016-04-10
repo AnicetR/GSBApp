@@ -18,9 +18,7 @@ angular.module('starter')
 
   $scope.submit = function() {
     Frais.putNotBundled($scope.data).then(function(result){
-      $scope.status = result[0].success
-    }, function(error){
-      $scope.status = error
+      $scope.status = result;
     });
   }
 });

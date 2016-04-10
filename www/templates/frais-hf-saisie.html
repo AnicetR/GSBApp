@@ -23,7 +23,11 @@
         <input type="submit" class="item button button-block button-balanced" value="Enregistrer">
       </form>
     </div>
-    {{status}}
+    <ul>
+      <li ng-repeat="value in status" ng-class="{success: value.success, error: value.error, alert: value.alert}">
+        {{ value.success || value.error || value.alert }}
+      </li>
+    </ul>
   </ion-content>
 
 </ion-view>

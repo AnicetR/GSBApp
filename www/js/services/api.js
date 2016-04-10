@@ -1,8 +1,8 @@
 angular.module('starter')
 
-.service('Api', function(Restangular, Auth){
+.service('Api', function(Restangular, Auth, APIUrl){
   return Restangular.withConfig(function(RestangularConfigurer) {
-    RestangularConfigurer.setBaseUrl('http://kooth.suroot.com:3005/api/');
+    RestangularConfigurer.setBaseUrl(APIUrl);
 
     RestangularConfigurer.addFullRequestInterceptor(function(element, operation, what, url, headers, queryParams, httpConfig) {
       if (Auth.isLogged()) {

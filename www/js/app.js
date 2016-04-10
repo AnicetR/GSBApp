@@ -7,6 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'restangular', 'ngCordova', 'angular-storage', 'base64'])
 
+  .constant('APIUrl', 'http://kooth.suroot.com:3005/api/')
+
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

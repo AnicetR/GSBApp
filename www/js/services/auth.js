@@ -1,12 +1,12 @@
 angular.module('starter')
 
-.service('Auth', function(Restangular, store, $base64){
+.service('Auth', function(Restangular, store, $base64, APIUrl, $state){
 
   this.login = function(login, key) {
     var token = $base64.encode(login + ':' + key);
 
     Restangular.setDefaultHeaders({ Authorization: 'Basic '+ token });
-    return Restangular.oneUrl('login', 'http://kooth.suroot.com:3005/api/Infos').get().then(function (response) {
+    return Restangular.oneUrl('login', APIUrl + 'Infos').get().then(function (response) {
       store.set('session', response);
       store.set('token', token);
       return response;
@@ -24,6 +24,11 @@ angular.module('starter')
   this.destroy = function() {
     store.remove('session');
     store.remove('token');
+  };
+
+  this.logout = function() {
+    this.destroy();
+    $state.go('login');
   };
 
   this.getSessionInfo = function() {
