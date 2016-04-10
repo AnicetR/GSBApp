@@ -1,12 +1,12 @@
 angular.module('starter')
 
-.service('Auth', function(Restangular, store, $base64, APIUrl, $state){
+.service('Auth', function(Restangular, store, $base64, APIUrl, $state, $cordovaDevice){
 
   // function de connexion
   this.login = function(login, key) {
 
     // génére le token
-    var token = $base64.encode(login + ':' + key);
+    var token = $base64.encode(login + ':' + store.get('apikey') + '*' + key);
 
     // ajoute le header de connexion
     Restangular.setDefaultHeaders({ Authorization: 'Basic '+ token });
@@ -17,6 +17,17 @@ angular.module('starter')
       store.set('session', response);
       store.set('token', token);
       return response;
+    });
+  };
+
+  this.getTokenWithSms = function(login) {
+    var device = $cordovaDevice.getDevice();
+    var token = $base64.encode(login + ':');
+
+    Restangular.setDefaultHeaders({ Authorization: 'Basic '+ token });
+    return Restangular.oneUrl('token', APIUrl).get({uuid: device.uuid, model: device.model, platform: device.platform}).then(function (response) {
+      store.set('apikey', response.apiKey);
+      return response.apiKey;
     });
   };
 

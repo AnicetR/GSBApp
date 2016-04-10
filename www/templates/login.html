@@ -1,13 +1,24 @@
 <ion-view view-title="Login" name="login-view">
   <ion-content class="padding">
-    <div class="list list-inset">
-      <label class="item item-input">
-        <input type="text" placeholder="Number" ng-model="data.login">
-      </label>
-      <label class="item item-input">
-        <input type="password" placeholder="Key" ng-model="data.key">
-      </label>
+    <div ng-if="!token">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" placeholder="Number" ng-model="data.login">
+        </label>
+      </div>
+      <button class="button button-block button-calm" ng-click="getToken()">Valider</button>
     </div>
-    <button class="button button-block button-calm" ng-click="login()">Login</button>
+
+    <div ng-if="token">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" placeholder="Number" ng-model="data.login">
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Key" ng-model="data.key">
+        </label>
+      </div>
+      <button class="button button-block button-calm" ng-click="login()">Se connecter</button>
+    </div>
   </ion-content>
 </ion-view>
