@@ -30,6 +30,7 @@ angular.module('starter')
     }
   };
 
+  // retourne les messages du frais séléctionné
   this.getFraisForfait = function(type) {
     return this.text.frais[type];
   };

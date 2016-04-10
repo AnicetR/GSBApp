@@ -1,13 +1,21 @@
 angular.module('starter')
 
 .service('Api', function(Restangular, Auth, APIUrl){
+
+  // retourne une instance de restangular configurer
   return Restangular.withConfig(function(RestangularConfigurer) {
+
+    // Ajoute un une base url pour toutes les requêtes
     RestangularConfigurer.setBaseUrl(APIUrl);
 
+    // Ajoute un middlerware avant l'envois de chaque requête
     RestangularConfigurer.addFullRequestInterceptor(function(element, operation, what, url, headers, queryParams, httpConfig) {
+      // Vérifie la connexion
       if (Auth.isLogged()) {
+        // Ajoute le header
         headers.Authorization = Auth.getToken();
       }
+      // envois la requête
       return {
         headers: headers,
         params: queryParams,
@@ -16,6 +24,7 @@ angular.module('starter')
       };
     });
 
+    // Ajoute un middlerware apres l'envois de chaque requête et catch les errors
     return RestangularConfigurer.setErrorInterceptor(function (response, deferred) {
       if (response.status === 401 && Auth.isLogged()) {
         Auth.destroy();

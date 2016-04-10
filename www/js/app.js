@@ -7,6 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'restangular', 'ngCordova', 'angular-storage', 'base64'])
 
+  // Constant api url
   .constant('APIUrl', 'http://kooth.suroot.com:3005/api/')
 
   .run(function($ionicPlatform) {

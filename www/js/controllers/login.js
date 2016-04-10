@@ -4,6 +4,7 @@ angular.module('starter')
   if (store.get('session') && store.get('token'))
     $state.go('tab.frais');
 
+  // mock de l'utilisateur
   $scope.data = {
     login: '0673088228',
     key: 'AB31547F2'
