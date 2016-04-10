@@ -27,15 +27,6 @@ angular.module('starter')
         header_text: 'Forfaits Etapes',
         label_text: 'Nombre d\'étapes pour le mois'
       }
-    },
-    fraisHorsForfait: {
-      icon: 'assignment',
-      header_text: 'Frais hors forfait',
-      inputs: {
-        date: 'Choisir la date',
-        libelle: 'Libellé',
-        coup: 'Coup en euros'
-      }
     }
   };
 
