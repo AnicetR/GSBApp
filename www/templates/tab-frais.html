@@ -5,24 +5,9 @@
         Frais forfaitisés
       </div>
 
-      <a class="item item-icon-left" href="#/tab/frais/KM">
-        <i class="icon ion-android-car"></i>
-        Frais kilométriques
-      </a>
-
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-android-restaurant"></i>
-        Frais restauration
-      </a>
-
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-ios-cloudy-night"></i>
-        Frais nuitée
-      </a>
-
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-coffee"></i>
-        Frais étape
+      <a class="item item-icon-left" ui-sref="tab.frais-details({fraisId: key})" ng-repeat="(key, value) in texts.frais">
+        <i class="icon {{value.icon}}"></i>
+        {{value.header_text}}
       </a>
 
       <div class="item item-divider">

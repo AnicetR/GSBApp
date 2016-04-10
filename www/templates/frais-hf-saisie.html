@@ -7,24 +7,23 @@
 <ion-view view-title="Saisie d'un frais hors forfait">
   <ion-content class="padding">
     <div class="list">
-
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Date</span>
-        <input type="text">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Libelle</span>
-        <input type="text">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Montant en €</span>
-        <input type="text">
-      </label>
-      <button class="item button button-block button-balanced">Enregistrer</button>
+      <form ng-submit="submit()">
+          <ion-item class="item-icon-right" ng-click="selectDate()">
+            <i  class="icon ion-ios-calendar-outline"></i>
+            {{ data.date }}
+          </ion-item>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Libelle</span>
+          <input type="text" ng-model="data.libelle">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Montant en €</span>
+          <input type="text" ng-model="data.montant">
+        </label>
+        <input type="submit" class="item button button-block button-balanced" value="Enregistrer">
+      </form>
     </div>
-    <div class="bar bar-footer">
-
-    </div>
+    {{status}}
   </ion-content>
 
 </ion-view>

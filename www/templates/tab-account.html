@@ -5,16 +5,19 @@
       <div class="item item-divider">
         Mes infos
       </div>
-      <div class="item"><b>Nom :</b> John Doh</div>
-      <div class="item"><b>Adresse :</b> Adresse</div>
-      <div class="item"><b>Etc :</b> ...</div>
+      <div class="item"><b>Nom :</b> {{auth.nom}}</div>
+      <div class="item"><b>Prenom :</b> {{auth.prenom}}</div>
+      <div class="item"><b>Adresse :</b> {{auth.adresse}}</div>
+      <div class="item"><b>Cp :</b> {{auth.cp}}</div>
+      <div class="item"><b>Ville :</b> {{auth.ville}}</div>
+      <div class="item"><b>Date d'embauche :</b> {{auth.dateEmbauche}}</div>
       <div class="item item-divider">
         Actions
       </div>
-      <a class="item item-icon-left" href="#">
+      <button class="item item-icon-left" ng-click="updateData()">
         <i class="icon ion-loop"></i>
         Forcer la mise à jour des éléments
-      </a>
+      </button>
     </ion-list>
   </ion-content>
 </ion-view>
