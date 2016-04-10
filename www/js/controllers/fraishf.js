@@ -6,8 +6,9 @@ angular.module('starter')
 
   var options = {
     date: new Date(),
-    mode: 'date', // or 'time'
-    minDate: new Date() - 10000
+    mode: 'date',
+    allowOldDates: true,
+    allowFutureDates: false
   };
 
   $scope.selectDate = function() {
