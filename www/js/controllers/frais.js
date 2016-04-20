@@ -1,5 +1,15 @@
-angular.module('starter')
+/**
+ * @ngdoc controller
+ * @name GSBApp.controller:FraisCtrl
+ *
+ * @requires $scope
+ * @requires GSBApp.service:Message
+ *
+ * @description
+ * Gère les actions liées aux frais
+ **/
 
-.controller('FraisCtrl', function($scope, Message) {
-  $scope.texts = Message.text;
-});
+angular.module('GSBApp')
+    .controller('FraisCtrl', function ($scope, Message) {
+        $scope.texts = Message.text;
+    });

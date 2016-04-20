@@ -6,12 +6,14 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var ngdocs = require('gulp-ngdocs');
+var connect = require('gulp-connect');
 
 var paths = {
   sass: ['./scss/**/*.scss']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'doc', 'doc-serve','watch']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -28,6 +30,7 @@ gulp.task('sass', function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
+  gulp.watch('www/js/**/*.js', ['doc']);
 });
 
 gulp.task('install', ['git-check'], function() {
@@ -49,3 +52,26 @@ gulp.task('git-check', function(done) {
   }
   done();
 });
+
+gulp.task('doc', function(){
+  var options = {
+    html5Mode: true,
+    startPage: '/api',
+    title: "GSBApp Docs",
+    titleLink: "/api",
+  }
+  return gulp.src('www/js/**/*.js')
+      .pipe(ngdocs.process(options))
+      .pipe(gulp.dest('./docs'))
+      .pipe(connect.reload());
+});
+
+gulp.task('doc-serve', function(){
+  connect.server({
+    root: 'docs',
+    livereload: true,
+    fallback: 'docs/index.html',
+    port: 8083
+  });
+});
+
